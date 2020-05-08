@@ -7,7 +7,7 @@ CREATE TABLE Rank (
 );
 
 CREATE TABLE Universityes (
-     university_name VARCHAR(30) NOT NULL
+     university_name VARCHAR(50) NOT NULL
     ,dynamic_year NUMBER(4,0) NOT NULL
     ,quality_of_faculty NUMBER(4,0) 
     ,country_name VARCHAR(20) NOT NULL REFERENCES Countries(country_name)
@@ -16,7 +16,7 @@ CREATE TABLE Universityes (
 );
 
 CREATE TABLE Universityes_Rank (
-     university_name VARCHAR(30) NOT NULL
+     university_name VARCHAR(50) NOT NULL
     ,dynamic_year NUMBER(4,0) NOT NULL
     ,university_position NUMBER(3,0) NOT NULL
     ,country_name VARCHAR(20) NOT NULL
