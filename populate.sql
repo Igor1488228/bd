@@ -59,7 +59,6 @@ INSERT INTO Universityes (university_name, dynamic_year, quality_of_faculty, cou
 INSERT INTO Universityes (university_name, dynamic_year, quality_of_faculty, country_name) VALUES ('University of Wisconsin–Madison', 2012, 33, 'USA');
 
 
-INSERT INTO Bands_Genres (band_name, formed_year, country_name, genre_name) VALUES ('Iron Maiden', 1975, 'United Kingdom', 'New wave of british heavy');
 INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, university_position) VALUES ('Harvard University', 2012, 'USA', '1');
 INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, university_position) VALUES ('Massachusetts Institute of Technology', 2012, 'USA', '2');
 INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, university_position) VALUES ('Stanford University', 2012, 'USA', '3');
