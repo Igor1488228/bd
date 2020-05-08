@@ -66,8 +66,8 @@ INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, univ
 INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, university_position) VALUES ('California Institute of Technology', 2012, 'USA', '5');
 INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, university_position) VALUES ('Princeton University', 2012, 'USA', '6');
 INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, university_position) VALUES ('University of Oxford', 2012, 'United Kingdom', '7');
-INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, university_position) VALUES ('Yale University', 2012,, 'USA', '8');
-INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, university_position) VALUES ('Columbia University', 2012,, 'USA', '9');
+INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, university_position) VALUES ('Yale University', 2012, 'USA', '8');
+INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, university_position) VALUES ('Columbia University', 2012, 'USA', '9');
 INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, university_position) VALUES ('University of California, Berkeley', 2012, 'USA', '10');
 INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, university_position) VALUES ('University of Chicago', 2012, 'USA', '11');
 INSERT INTO Universityes_Rank (university_name, dynamic_year, country_name, university_position) VALUES ('Cornell University', 2012, 'USA', '12');
