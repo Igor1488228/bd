@@ -20,7 +20,7 @@ CREATE TABLE Universityes_Rank (
     ,dynamic_year NUMBER(4,0) NOT NULL
     ,university_position NUMBER(3,0) NOT NULL
     ,country_name VARCHAR(20) NOT NULL
-    ,CONSTRAINT PK_BUniversityes_Rank PRIMARY KEY (university_name, dynamic_year, country_name, university_position)
+    ,CONSTRAINT PK_Universityes_Rank PRIMARY KEY (university_name, dynamic_year, country_name, university_position)
     ,CONSTRAINT FK1_Universityes_Rank FOREIGN KEY (university_position) REFERENCES Ranks(university_position)
     ,CONSTRAINT FK2_Universityes_Rank FOREIGN KEY (university_name, dynamic_year, country_name) REFERENCES Universityes(university_name, dynamic_year, country_name)
 );
