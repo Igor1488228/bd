@@ -1,22 +1,44 @@
---1
-select country, count(university_name) as count_cntry
-from university
-GROUP BY country
-order by count_cntry DESC;
---2
-select  round((count(university.university_name)/298) * 100, 2) as rate
-    ,NVL(countryes.country, 0) as country
-from university
-RIGHT join country
-on country.university_name = university.university_name
-GROUP by NVL(countryes.country, 0)
-order by countryes DESC;
+--First 
 
-select count(universityes.university_name) as count_un
-            , years.university_years as all_years
-            from university
-            INNER JOIN years
-            on years.university_name = university.university_name
---3
-GROUP by years.university_years
-ORDER by count_un DESC;
+SELECT
+    TRIM(c.country_name) country,
+    COUNT(u.university_name) universityes
+FROM
+    Countries   c
+    LEFT JOIN Universityes u ON c.country_name = u.country_name
+GROUP BY
+    TRIM(c.country_name)
+ORDER BY
+   universityes DESC;
+
+
+--Second 
+
+SELECT
+    TRIM(p.university_position) rank,
+    COUNT(u.university_name) universityes
+FROM
+    rank p
+    LEFT JOIN Universityes_Rank up ON p.university_position = up.university_position
+    LEFT JOIN Universityes u         ON u.university_name = up.university_name
+                             AND u.dynamic_year = up.dynamic_year
+                             AND u.country_name = up.country_name
+GROUP BY
+    TRIM(p.university_position)
+ORDER BY
+    universityes DESC;
+
+
+--Third 
+
+SELECT 
+    TRIM(c.country_name) country, 
+    NVL(SUM(u.universityes), 0) universityes
+FROM 
+    Countries c
+    LEFT JOIN Universityes u ON c.country_name = u.country_name
+GROUP BY 
+    TRIM(c.country_name)
+ORDER BY 
+    fans DESC;
+    
