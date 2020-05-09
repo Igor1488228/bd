@@ -40,5 +40,5 @@ FROM
 GROUP BY 
     TRIM(c.country_name)
 ORDER BY 
-    fans DESC;
+    universityes DESC;
     
