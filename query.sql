@@ -33,12 +33,12 @@ ORDER BY
 
 SELECT 
     TRIM(c.country_name) country, 
-    NVL(SUM(u.universityes), 0) universityes
+    NVL(SUM(u.quality_of_faculty), 0) quality_of_faculty
 FROM 
     Countries c
     LEFT JOIN Universityes u ON c.country_name = u.country_name
 GROUP BY 
     TRIM(c.country_name)
 ORDER BY 
-    universityes DESC;
+       quality_of_faculty DESC;
     
