@@ -29,18 +29,19 @@ ORDER BY
    universities DESC;"""
 
 second_query = """SELECT
-    TRIM(p.university_position) rank,
+    TRIM(r.university_rank) ranks,
     COUNT(u.university_name) universities
 FROM
-    rank p
-    LEFT JOIN Universities_Rank up ON p.university_position = up.university_position
-    LEFT JOIN Universities u         ON u.university_name = up.university_name
-                             AND u.dynamic_year = up.dynamic_year
-                             AND u.country_name = up.country_name
+    ranks r
+    LEFT JOIN Universities_Ranks ur ON r.university_rank = ur.university_rank
+    LEFT JOIN Universities u         ON u.university_name = ur.university_name
+                             AND u.dynamic_year = ur.dynamic_year
+                             AND u.country_name = ur.country_name
 GROUP BY
-    TRIM(p.university_position)
+    TRIM(r.university_rank)
 ORDER BY
-    universities DESC;"""
+    universities DESC;
+
 
 third_query = """SELECT 
     TRIM(c.country_name) country, 
