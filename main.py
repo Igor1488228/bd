@@ -1,74 +1,62 @@
 import cx_Oracle
 
-username = 'BATIAVGNEVE'
-password = 'oracle'
-databaseName = 'localhost/xe'
+def exec(cursor, query):
+    columns = []
+    cursor.execute(query)
+    for column in cursor.description:
+        columns.append(column[0])
+    print(" | ".join(columns))
+    for row in cursor:
+        print(row)
+    print("\n")
 
-connection = cx_Oracle.connect(username, password, databaseName)
+username = 'BATIAVGNEVE'
+password = 'Ehuvum228'
+dsn = 'localhost/xe'
+
+connection = cx_Oracle.connect(username, password, dsn)
 cursor = connection.cursor()
 
-#Запит 1
-query = '''
- select country, count(university_name) as count_cntry
- from university
- GROUP BY country
- order by count_cntry DESC;'''
+first_query = """SELECT
+    TRIM(c.country_name) country,
+    COUNT(u.university_name) universities
+FROM
+    Countries   c
+    LEFT JOIN Universities u ON c.country_name = u.country_name
+GROUP BY
+    TRIM(c.country_name)
+ORDER BY
+   universities DESC;"""
 
-cursor.execute(query)
-print('Запит 1')
+second_query = """SELECT
+    TRIM(p.university_position) rank,
+    COUNT(u.university_name) universities
+FROM
+    rank p
+    LEFT JOIN Universities_Rank up ON p.university_position = up.university_position
+    LEFT JOIN Universities u         ON u.university_name = up.university_name
+                             AND u.dynamic_year = up.dynamic_year
+                             AND u.country_name = up.country_name
+GROUP BY
+    TRIM(p.university_position)
+ORDER BY
+    universities DESC;"""
 
-row = cursor.fetchone()
-while row:
-
-    row = cursor.fetchone()
-
-print()
-
-#Запит 2
-
-query = '''
-select  round((count(university.university_name)/298) * 100, 2) as rate
-    ,NVL(countryes.country, 0) as country
-from university
-RIGHT join country
-on country.university_name = university.university_name
-GROUP by NVL(countryes.country, 0)
-order by countryes DESC;
-'''
-
-cursor.execute(query)
-print('Запит 2')
-
-row = cursor.fetchone()
-while row:
-
-    row = cursor.fetchone()
-
-print()
+third_query = """SELECT 
+    TRIM(c.country_name) country, 
+    NVL(SUM(u.quality_of_faculty), 0) quality_of_faculty
+FROM 
+    Countries c
+    LEFT JOIN Universities u ON c.country_name = u.country_name
+GROUP BY 
+    TRIM(c.country_name)
+ORDER BY 
+       quality_of_faculty DESC;"""
 
 
-#Запит 3
+exec(cursor, first_query)
+exec(cursor, second_query)
+exec(cursor, third_query)
 
-query = '''
-select count(universityes.university_name) as count_un
-            , years.university_years as all_years
-            from university
-            INNER JOIN years
-            on years.university_name = university.university_name
-
-GROUP by years.university_years
-ORDER by count_un DESC;
-'''
-
-cursor.execute(query)
-print('Запит 3')
-
-
-row = cursor.fetchone()
-while row:
-
-    row = cursor.fetchone()
-
-print()
-
+cursor.close()
 connection.close()
