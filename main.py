@@ -40,7 +40,7 @@ FROM
 GROUP BY
     TRIM(r.university_rank)
 ORDER BY
-    universities DESC;
+    universities DESC;"""
 
 
 third_query = """SELECT 
